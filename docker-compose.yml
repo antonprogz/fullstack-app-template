@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+  cli:
+    build:
+      context: ./docker/cli
+    volumes:
+      - type: bind
+        source: ./
+        target: /home/hostuser/app
+    environment:
+      UID: ${uid}
+      GID: ${gid}
+      XDEBUG_CONFIG: remote_enable=1 remote_mode=req remote_host=${ip} remote_port=9000 idekey=phpstorm remote_connect_back=0
